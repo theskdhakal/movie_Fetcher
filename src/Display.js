@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { CustomCard } from "./CustomCard";
 
-export const Display = ({ movieList }) => {
+export const Display = ({ movieList, handleOnDelete }) => {
   const [displayList, setDisplayList] = useState([]);
 
   //runs only on initial time
@@ -23,28 +23,32 @@ export const Display = ({ movieList }) => {
 
   return (
     <div className="bg-black p-5 rounded shadow-lg mt-5">
-      <ButtonGroup aria-label="Basic example">
-        <Button onClick={() => handleOnFilter("all")} variant="primary">
-          All
-        </Button>
-        <Button onClick={() => handleOnFilter("happy")} variant="secondary">
-          Happy
-        </Button>
-        <Button onClick={() => handleOnFilter("lazy")} variant="info">
-          Lazy
-        </Button>
-      </ButtonGroup>
+      <div className="">
+        <ButtonGroup aria-label="Basic example">
+          <Button onClick={() => handleOnFilter("all")} variant="primary">
+            All
+          </Button>
+          <Button onClick={() => handleOnFilter("happy")} variant="secondary">
+            Happy
+          </Button>
+          <Button onClick={() => handleOnFilter("lazy")} variant="info">
+            Lazy
+          </Button>
+        </ButtonGroup>
+      </div>
 
       <div className="py-3">{displayList.length} Movies found !</div>
       <hr />
       <Row>
         <Col className="d-flex gap-2 flex-wrap justify-content-around">
           {displayList.map((item) => (
-            <CustomCard searchedMovie={item} movieCate />
+            <CustomCard
+              searchedMovie={item}
+              movieCategorizer={handleOnDelete}
+            />
           ))}
         </Col>
       </Row>
-      <CustomCard />
     </div>
   );
 };

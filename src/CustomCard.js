@@ -9,7 +9,7 @@ export const CustomCard = ({ searchedMovie, movieCategorizer }) => {
       <Card.Body>
         <Card.Title>{searchedMovie?.Title}</Card.Title>
         <Card.Text className="mt-4 mb-4">
-          {searchedMovie?.Plot?.slice(0, 50)}...
+          {searchedMovie?.Plot?.slice(0, 50)}
         </Card.Text>
         {!searchedMovie.mode ? (
           <>
@@ -37,7 +37,7 @@ export const CustomCard = ({ searchedMovie, movieCategorizer }) => {
         ) : (
           <div className="d-grid mt-3">
             <Button
-              // onClick={() => handleOnDelete(searchedMovie.imdbID)}
+              onClick={() => movieCategorizer(searchedMovie.imdbID)}
               variant="danger"
             >
               Delete

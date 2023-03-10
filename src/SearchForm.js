@@ -46,9 +46,8 @@ export const SearchForm = ({ addMovieToList }) => {
       </Form>
 
       <div className="d-flex justify-content-center mt-5">
-        {error ? (
-          <Alert variant="danger">Movie not found</Alert>
-        ) : (
+        {error && <Alert variant="danger">Movie not found</Alert>}
+        {searchedMovie.imdbID && (
           <CustomCard
             searchedMovie={searchedMovie}
             movieCategorizer={movieCategorizer}
